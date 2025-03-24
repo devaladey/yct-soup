@@ -1,8 +1,10 @@
 // Import socket.io client
-const io = require("socket.io-client")
+// const io = require("socket.io-client")
+import io from "socket.io-client"
 
 // Import mediasoup client
-const mediasoupClient = require("mediasoup-client")
+// const mediasoupClient = require("mediasoup-client")
+import mediasoupClient from "mediasoup-client"
 
 // Global variables
 let currentRoom = null
