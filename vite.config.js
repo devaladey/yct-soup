@@ -1,5 +1,7 @@
+import {defineConfig} from 'vite'
 // vite.config.js
-export default {
+export default defineConfig({
+    root: 'public',
     server: {
       port: 3000,
       // If you need to proxy WebSocket connections to your backend
@@ -9,5 +11,8 @@ export default {
           ws: true
         }
       }
-    }
-  }
+    },
+    build: {
+        outDir: 'dist',  // Vite will output built files to 'dist'
+      }
+  });
