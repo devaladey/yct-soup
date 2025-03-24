@@ -1,10 +1,13 @@
 // Import socket.io client
 // const io = require("socket.io-client")
-import io from "socket.io-client"
+// import io from "socket.io-client"
 
 // Import mediasoup client
 // const mediasoupClient = require("mediasoup-client")
-import mediasoupClient from "mediasoup-client"
+// import mediasoupClient from "mediasoup-client"
+
+import { io } from "https://cdn.socket.io/4.7.4/socket.io.esm.min.js"
+import * as mediasoupClient from "https://cdn.jsdelivr.net/npm/mediasoup-client@3/lib/index.min.js"
 
 // Global variables
 let currentRoom = null
