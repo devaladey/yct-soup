@@ -5,5 +5,5 @@
 // Note: In production, use the following:
 // <script src="https://unpkg.com/mediasoup-client@3/dist/mediasoup-client.min.js"></script>
 
-document.write('<script src="https://unpkg.com/mediasoup-client@3/dist/mediasoup-client.min.js"></script>')
+// document.write('<script src="https://unpkg.com/mediasoup-client@3/dist/mediasoup-client.min.js"></script>')
 

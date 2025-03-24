@@ -6,9 +6,16 @@
 // const mediasoupClient = require("mediasoup-client")
 // import mediasoupClient from "mediasoup-client"
 
-import { io } from "https://cdn.socket.io/4.7.4/socket.io.esm.min.js"
-import * as mediasoupClient from "https://cdn.jsdelivr.net/npm/mediasoup-client@3/lib/index.min.js"
+// import { io } from "https://cdn.socket.io/4.7.4/socket.io.esm.min.js"
+// import * as mediasoupClient from "https://cdn.jsdelivr.net/npm/mediasoup-client@3/lib/index.min.js"
 
+// main.js
+// import { io } from "https://cdn.socket.io/4.7.4/socket.io.esm.min.js";
+
+// Use the global mediasoupClient variable
+// const device = new mediasoupClient.Device();
+
+const io = io('http://localhost:3000');
 
 // Global variables
 let currentRoom = null
