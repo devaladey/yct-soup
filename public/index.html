@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MediaSoup Video Conference</title>
+        <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+        <link rel="stylesheet" href="css/main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <h1 id="room-title"></h1>
+
+        <div id="join-screen" class="join-screen">
+            <div class="join-container">
+                <h2>Join Video Conference</h2>
+                <div class="room-controls">
+                    <label for="roomId">Enter Room ID</label>
+                    <input id="roomId" type="text" placeholder="Room ID" />
+                    <label for="userName">Your Name</label>
+                    <input id="userName" type="text" placeholder="Your Name" />
+                    <div class="button-group">
+                        <button id="joinBtn">Join</button>
+                        <button id="leaveBtn" class="hidden">Leave</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notification" class="hidden"></div>
+
+        <div id="videos">
+            <div id="videoGrid" class="grid-container"></div>
+        </div>
+
+        <div id="localVideo-container">
+            <video autoplay playsinline muted></video>
+            <div class="status-container">
+                <span class="status-indicator mic-status">🎤</span>
+                <span class="status-indicator camera-status">📹</span>
+                <span class="status-indicator hand-status hidden">✋</span>
+            </div>
+        </div>
+
+        <div id="controls" class="controls-container hidden">
+            <button id="micBtn" class="control-btn" title="Toggle Microphone">🎤</button>
+            <button id="cameraBtn" class="control-btn" title="Toggle Camera">📹</button>
+            <button id="raiseHandBtn" class="control-btn" title="Raise Hand">✋</button>
+            <button id="screenShareBtn" class="control-btn" title="Share Screen">📊</button>
+            <button id="leaveCallBtn" class="control-btn" title="Leave Call" style="background-color: #ff4d4d;">❌</button>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="https://unpkg.com/mediasoup-client@3/dist/mediasoup-client.min.js"></script> -->
+        <script src="js/mediasoup-client.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

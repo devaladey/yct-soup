@@ -1,0 +1,377 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  color: #f1f1f1;
+  background-color: #2a2a2a;
+  margin-bottom: 0;
+}
+
+/* Login/Room Join Screen */
+.join-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.join-container {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 30px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.join-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #f1f1f1;
+}
+
+.room-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.room-controls label {
+  font-weight: 500;
+  margin-bottom: -10px;
+}
+
+#roomId, #userName {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #f1f1f1;
+  font-size: 16px;
+  width: 100%;
+}
+
+#roomId:focus, #userName:focus {
+  outline: none;
+  border-color: #2d8cff;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#joinBtn,
+#leaveBtn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+#joinBtn {
+  background-color: #2d8cff;
+  color: white;
+}
+
+#joinBtn:hover {
+  background-color: #1a7bff;
+}
+
+#leaveBtn {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+#leaveBtn:hover {
+  background-color: #e63939;
+}
+
+/* Main Video Grid */
+#videos {
+  height: calc(100vh - 120px);
+  padding: 10px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.grid-item p {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.grid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Local Video */
+#localVideo-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 240px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  border: 2px solid #2d8cff;
+  transition: all 0.3s ease;
+}
+
+#localVideo-container:hover {
+  transform: scale(1.05);
+}
+
+#localVideo-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#localVideo-container::after {
+  content: "You";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Controls Bar */
+.controls-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background-color: #2a2a2a;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 200;
+}
+
+.control-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #3a3a3a;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn:hover {
+  background-color: #4a4a4a;
+}
+
+.control-btn.active {
+  background-color: #ff4d4d;
+}
+
+.control-btn.active:hover {
+  background-color: #e63939;
+}
+
+/* Status Indicators */
+.status-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.status-indicator {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 14px;
+}
+
+.status-indicator.muted {
+  background-color: #ff4d4d;
+}
+
+.status-indicator.off {
+  background-color: #ff4d4d;
+}
+
+/* Participant Controls */
+.participant-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.kick_btn,
+.mute_btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kick_btn:hover {
+  background-color: #ff4d4d;
+}
+
+.mute_btn:hover {
+  background-color: #ff9800;
+}
+
+/* Screen Share */
+#screen-share-container {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 15px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+  aspect-ratio: 16 / 9;
+}
+
+#screen-share-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#screen-share-container::after {
+  content: "Screen Share";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Notification */
+#notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 1000;
+  font-size: 14px;
+  max-width: 80%;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+/* Raised Hand Animation */
+@keyframes handWave {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.hand-status:not(.hidden) {
+  animation: handWave 1.5s infinite;
+  background-color: #ffca28;
+  color: #333;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
