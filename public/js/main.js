@@ -15,7 +15,7 @@
 // Use the global mediasoupClient variable
 // const device = new mediasoupClient.Device();
 
-const io = io('http://localhost:3000');
+// const io = io('http://localhost:3000');
 
 // Global variables
 let currentRoom = null
