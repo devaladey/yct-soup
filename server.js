@@ -14,6 +14,10 @@ const io = socketIO(server);
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 // MediaSoup objects
 let worker;
 const rooms = new Map(); // Maps roomId => Room object
