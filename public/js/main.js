@@ -57,14 +57,16 @@ const leaveBtn = document.querySelector("#leaveBtn")
 
 // Initialize the application
 async function init() {
-  // Connect to signaling server
-  socket = io()
+  // if (io) {
+    // Connect to signaling server
+    socket = io()
 
-  // Set up socket event listeners
-  setupSocketListeners()
+    // Set up socket event listeners
+    setupSocketListeners()
 
-  // Set up UI event listeners
-  setupUIListeners()
+    // Set up UI event listeners
+    setupUIListeners()
+  // }
 }
 
 // Set up socket event listeners
